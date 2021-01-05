@@ -22,8 +22,8 @@ const App = () => {
   const [recentSearch, setRecentSearch] = useState([]);
   const [query, setQuery] = useState("London");
   const [error, setError] = useState(false);
-  const [bg, setBg] = useState()
-  const [loading, setLoading] = useState(true)
+  const [bg, setBg] = useState();
+  const [loading, setLoading] = useState(true);
   // const [result, loading] = useWeather(query)
   const API_KEY = 'bd4fde425735192346803102941804ec';
 
@@ -35,10 +35,17 @@ const App = () => {
         setLoading(false);
         setError(false)
         setWeather(data);
+        if (recentSearch.length < 4) {
+          setRecentSearch(oldArray => [...oldArray, query]);
+        }else{
+          recentSearch.reverse();
+          recentSearch.unshift(query);
+          recentSearch.pop();
+          recentSearch.reverse();
+        }
       }else{
-        setLoading(false)
-        setError(true)
-        console.log(error);
+        setLoading(false);
+        setError(true);
       }
     }
     getWeather();
@@ -90,24 +97,12 @@ const App = () => {
 
   const updateSearch = (e) => {
     setSearch(e.target.value);
-    console.log(e.target.name);
   }
 
   const getSearch = (e) => {
     e.preventDefault();
     setQuery(search);
     setSearch("");
-  }
-
-  const getRecentSearch = () => {
-    if (recentSearch.length < 4) {
-        setRecentSearch(oldArray => [...oldArray, search]);
-    }else{
-        recentSearch.reverse();
-        recentSearch.unshift(search);
-        recentSearch.pop();
-        recentSearch.reverse();
-    }
   }
 
   const matchData = (e) => {
@@ -118,15 +113,6 @@ const App = () => {
     return <p>Loading</p>
   }
   
-  
-  
-  const errorCheck = () => {
-    
-    if(error === true){
-      return error
-    }
-  }
-
   return(
     <div className="App"  style={bg}>
       <p className="logo">weather</p>
@@ -146,12 +132,10 @@ const App = () => {
         search={search}
         getSearch={getSearch}
         updateSearch={updateSearch}
-        getRecentSearch={getRecentSearch}
         matchData={matchData}
         recentSearch={recentSearch}
         error={error}
        />
-
       </div>
   );
 }

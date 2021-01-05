@@ -1,7 +1,7 @@
 import React from 'react';
 import './style/menu.css'
 
-const Menu = ({search, matchData, getSearch, updateSearch, getRecentSearch, recentSearch, error, weather, winds, humidity, clouds}) => {
+const Menu = ({search, matchData, getSearch, updateSearch, recentSearch, error, weather, winds, humidity, clouds}) => {
 
     const setButtonColor = () => {
         if(weather === 'Clouds'){
@@ -38,7 +38,6 @@ const Menu = ({search, matchData, getSearch, updateSearch, getRecentSearch, rece
       }
 
       const checkError = () => {
-        console.log(error);
         if(error === true){
           return {
             display: 'inline'
@@ -55,7 +54,7 @@ const Menu = ({search, matchData, getSearch, updateSearch, getRecentSearch, rece
             <form onSubmit={getSearch}>
                 <input type="text" placeholder="Another location..." value={search} onChange={updateSearch} style={inputColor()} />
                 <p className="error" style={checkError()} >Enter a valid city.</p>
-                <button type="submit" onClick={getRecentSearch} style={setButtonColor()} ><i className="fas fa-search"></i></button>
+                <button type="submit"  style={setButtonColor()} ><i className="fas fa-search"></i></button>
             </form>
             <div className="previous-result">
                 <ul>
