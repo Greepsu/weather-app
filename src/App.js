@@ -1,124 +1,123 @@
-import React, { useEffect, useState } from 'react'
-import './App.css';
+import React, { useEffect, useState } from "react";
+
+//improt styles
+import "./App.css";
+
 //import images
-import sunnyBg from './images/sunny2.jpg'
-import cloudyBg from './images/cloudy2.jpg'
-import foggyBg from './images/foggy.jpg'
-import rainBg from './images/rain.jpg'
-import drizzleBg from './images/drizzle.jpg'
-import hazeBg from './images/haze.jpg'
-import snowBg from './images/snow.jpg'
+import sunnyBg from "./images/sunny2.jpg";
+import cloudyBg from "./images/cloudy2.jpg";
+import foggyBg from "./images/foggy.jpg";
+import rainBg from "./images/rain.jpg";
+import drizzleBg from "./images/drizzle.jpg";
+import hazeBg from "./images/haze.jpg";
+import snowBg from "./images/snow.jpg";
+
 //import Components
-import Data from './Components/Data'
-import Menu from './Components/Menu'
-//import Hooks
-import useWeather from "../src/Hooks/useWeather"
-// import useGeoLocation from "../src/Hooks/useGeoLocation";
+import Data from "./Components/Data";
+import Menu from "./Components/Menu";
 
 const App = () => {
-
   const [weather, setWeather] = useState([]);
   const [search, setSearch] = useState("");
   const [recentSearch, setRecentSearch] = useState([]);
   const [query, setQuery] = useState("London");
   const [error, setError] = useState(false);
   const [bg, setBg] = useState();
-  const [loading, setLoading] = useState(true);
-  // const [result, loading] = useWeather(query)
-  const API_KEY = 'bd4fde425735192346803102941804ec';
 
   useEffect(() => {
     const getWeather = async () => {
-      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${API_KEY}&units=metric`);
+      const API_KEY = process.env.REACT_APP_API_KEY;
+
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${API_KEY}&units=metric`
+      );
       const data = await response.json();
       if (response.ok) {
-        setLoading(false);
-        setError(false)
+        setError(false);
         setWeather(data);
         if (recentSearch.length < 4) {
-          setRecentSearch(oldArray => [...oldArray, query]);
-        }else{
+          setRecentSearch((oldArray) => [...oldArray, query]);
+        } else {
           recentSearch.reverse();
           recentSearch.unshift(query);
           recentSearch.pop();
           recentSearch.reverse();
         }
-      }else{
-        setLoading(false);
+      } else {
         setError(true);
       }
-    }
+    };
     getWeather();
-  }, [query])
+  }, [query]);
 
   useEffect(() => {
     const setBackground = () => {
-      if(!weather.weather) return;
+      if (!weather.weather) return;
       const weatherType = weather.weather[0].main;
-      if(weatherType === 'Clouds'){
+      if (weatherType === "Clouds") {
         return {
           backgroundImage: `url(${cloudyBg})`,
-          transition: "1s ease-in-out"
-        }
-      }else if(weatherType === 'Clear'){
+          transition: "1s ease-in-out",
+        };
+      } else if (weatherType === "Clear") {
         return {
           backgroundImage: `url(${sunnyBg})`,
-          transition: "1s ease-in-out"
-        }
-      }else if(weatherType === 'Mist'){
+          transition: "1s ease-in-out",
+        };
+      } else if (weatherType === "Mist") {
         return {
           backgroundImage: `url(${foggyBg})`,
-          transition: "1s ease-in-out"
-        }
-      }else if(weatherType === 'Rain'){
+          transition: "1s ease-in-out",
+        };
+      } else if (weatherType === "Rain") {
         return {
           backgroundImage: `url(${rainBg})`,
-          transition: "1s ease-in-out"
-        }
-      }else if(weatherType === 'Drizzle'){
+          transition: "1s ease-in-out",
+        };
+      } else if (weatherType === "Drizzle") {
         return {
           backgroundImage: `url(${drizzleBg})`,
-          transition: "1s ease-in-out"
-        }
-      }else if(weatherType === 'Haze'){
+          transition: "1s ease-in-out",
+        };
+      } else if (weatherType === "Haze") {
         return {
           backgroundImage: `url(${hazeBg})`,
-          transition: "1s ease-in-out"
-        }
-      }else if(weatherType === 'Snow'){
+          transition: "1s ease-in-out",
+        };
+      } else if (weatherType === "Snow") {
         return {
           backgroundImage: `url(${snowBg})`,
-          transition: "1s ease-in-out"
-        }
+          transition: "1s ease-in-out",
+        };
       }
-    }
-    setBg(setBackground())
-  }, [weather])  
+    };
+    setBg(setBackground());
+  }, [weather]);
 
   const updateSearch = (e) => {
     setSearch(e.target.value);
-  }
+  };
 
   const getSearch = (e) => {
     e.preventDefault();
     setQuery(search);
     setSearch("");
-  }
+  };
 
   const matchData = (e) => {
-    setQuery(e.target.innerText)
+    setQuery(e.target.innerText);
+  };
+
+  if (!weather.weather) {
+    return <p>Loading</p>;
   }
 
-  if(!weather.weather){
-    return <p>Loading</p>
-  }
-  
-  return(
-    <div className="App"  style={bg}>
+  return (
+    <div className="App" style={bg}>
       <p className="logo">weather</p>
 
-      <Data 
-        city={weather.name} 
+      <Data
+        city={weather.name}
         weather={weather.weather[0].main}
         temp={weather.main.temp}
         icon={weather.weather[0].icon}
@@ -135,9 +134,9 @@ const App = () => {
         matchData={matchData}
         recentSearch={recentSearch}
         error={error}
-       />
-      </div>
+      />
+    </div>
   );
-}
+};
 
 export default App;
