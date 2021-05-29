@@ -3,7 +3,16 @@ import React from "react";
 //import styles
 import "./style/menu.css";
 
+//import images
+import searchIcon from "../images/search-icon.png";
+
 import { v4 as uuid_v4 } from "uuid";
+
+//import windows size track
+import {useWindowSize} from 'react-use';
+
+
+
 
 const Menu = ({
   search,
@@ -11,12 +20,16 @@ const Menu = ({
   getSearch,
   updateSearch,
   recentSearch,
+  menuActive,
   error,
   weather,
   winds,
   humidity,
   clouds,
 }) => {
+  const {width} = useWindowSize();
+const breakpoint = 768;
+
   const setButtonColor = () => {
     if (weather === "Clouds") {
       return {
@@ -63,8 +76,25 @@ const Menu = ({
     }
   };
 
+
+  
+
+  const menuStyles = () => {
+    const styles = {
+      Active: {
+        transform: "translateY(100%)",
+      },
+      Inactive: {
+        transform: "translateY(0)",
+      },
+    };
+    if(width < breakpoint) {
+      return menuActive ? styles.Inactive : styles.Active
+    }
+  }
+
   return (
-    <div className="menu">
+    <div className="menu" style={menuStyles()}>
       <form onSubmit={getSearch}>
         <input
           type="text"
@@ -77,13 +107,15 @@ const Menu = ({
           Enter a valid city.
         </p>
         <button type="submit" style={setButtonColor()}>
-          <i className="fas fa-search"></i>
+          <i>
+            <img src={searchIcon} alt="search icon" />
+          </i>
         </button>
       </form>
       <div className="previous-result">
         <ul>
           {recentSearch
-            .map(item => (
+            .map((item) => (
               <li key={uuid_v4()} onClick={matchData}>
                 {item.charAt(0).toUpperCase() + item.slice(1)}
               </li>
@@ -93,7 +125,7 @@ const Menu = ({
       </div>
       <hr />
       <div className="weather-detail">
-        <h1>Weather Detail</h1>
+        <h2>Weather Detail</h2>
         <div className="more-info">
           <p>
             Cloudy<span>{clouds}%</span>

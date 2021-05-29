@@ -1,113 +1,158 @@
-.menu{
-    width: 35%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    position: absolute;
-    right: 0;
-    backdrop-filter: blur(15px) brightness(80%);
-    padding: 65px 50px 0 50px;
-    font-size: 22px;
-    color: #ddd7d7;
+.menu {
+  width: 35%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: absolute;
+  right: 0;
+  backdrop-filter: blur(15px) brightness(80%);
+  padding: 65px 50px 0 50px;
+  font-size: 22px;
+  color: #ddd7d7;
 }
 
-form{
-    width: 100%;
+form {
+  width: 100%;
 }
 
-form input{
-    min-width: 80%;
-    background: transparent;
-    outline: none;
-    border: none;
-    border-bottom: 1px solid white;
-    font-size: 22px;
-    padding-bottom: 5px;
-    color: #afafaf;
-    margin-bottom: 50px;
+form input {
+  min-width: 80%;
+  background: transparent;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid white;
+  font-size: 22px;
+  padding-bottom: 5px;
+  color: #afafaf;
+  margin-bottom: 50px;
 }
 
-form .error{
-    font-size: 14px;
-    position: absolute;
-    top: 110px;
-    display: none;
+form .error {
+  font-size: 14px;
+  position: absolute;
+  top: 110px;
+  display: none;
 }
 
-form button{
+form button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+  outline: none;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+form button i img{
+  width: 50px;
+}
+
+.previous-result {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 220px;
+}
+
+.previous-result ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.previous-result li {
+  list-style: none;
+  font-size: 22px;
+  margin: 15px 0;
+}
+
+.previous-result li:hover {
+  cursor: pointer;
+  color: rgb(240, 238, 238);
+}
+
+.weather-detail {
+  width: 100%;
+  height: auto;
+}
+
+.weather-detail h2 {
+  font-size: 24px;
+}
+
+.more-info {
+  height: 150px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.more-info p {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 22px;
+}
+
+.more-info p:hover {
+  cursor: pointer;
+  color: rgb(240, 238, 238);
+}
+
+hr {
+  width: 100%;
+  margin: 50px 0;
+}
+
+@media screen and (max-width: 1024px) {
+  .menu {
+    padding: 40px 50px 0 50px;
+    width: 40%;
+
+  }
+
+  form input {
+    font-size: 16px;
+  }
+
+  form button {
     position: absolute;
     top: 0;
     right: 0;
-    border: none;
-    outline: none;
-    width: 100px;
-    height: 100px;
-    cursor: pointer;
+    width: 70px;
+    height: 70px;
+  }
+
+  form button i img {
+    width: 35px;
+  }
+
+  .previous-result li {
+    font-size: 20px;
+  }
+
+  .weather-detail h2 {
+    font-size: 20px;
+  }
+
+  .more-info p {
+    font-size: 18px;
+  }
 }
 
-form button i{
-    font-size: 34px;
+@media screen and (max-width: 768px) {
+.menu {
+  bottom: 0;
+  width: 100%;
+  transition: 0.7s ease-in-out;
 }
-
-.previous-result{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 220px;
-}
-
-.previous-result ul{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    height: 100%;
-}
-
-.previous-result li{
-    list-style: none;
-    font-size: 22px;
-    margin: 15px 0;
-}
-
-.previous-result li:hover{
-    cursor: pointer;
-    color: rgb(240, 238, 238);
-}
-
-.weather-detail{
-    width: 100%;
-    height: auto;
-}
-
-.weather-detail h1{
-    font-size: 24px;
-}
-
-.more-info{
-    height: 150px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-top: 50px;
-}
-
-.more-info p{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    font-size: 22px;
-}
-
-.more-info p:hover{
-    cursor: pointer;
-    color: rgb(240, 238, 238);
-}
-
-hr{
-    width: 100%;
-    margin: 50px 0;
 }

@@ -1,37 +1,74 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
 
-*, ::after, ::before{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*,
+:after,
+:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-    font-family: 'Lato', sans-serif;
+body {
+  font-family: "Lato", sans-serif;
 }
 
-.App{
-    position: relative;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: bottom;
-    height: 100vh;
+.App {
+    display: flex;
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  height: 100vh;
 }
 
-.logo{
-    color: white;
-    font-size: 32px;
-    position: absolute;
-    left: 200px;
-    top: 50px;
+.logo {
+  color: white;
+  font-size: 32px;
+  position: absolute;
+  left: 10%;
+  top: 50px;
 }
 
-.error{
-    font-size: 26px;
-    color: red;
-    position: absolute;
-    right: 50;
-    top: 50;
-    left: 50;
-    bottom: 50;
+.error {
+  font-size: 26px;
+  color: red;
+  position: absolute;
+  right: 50;
+  top: 50;
+  left: 50;
+  bottom: 50;
+}
+
+@media screen and (max-width: 1024px) {
+    .logo {
+        font-size: 22px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .App {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .logo {
+      position: static;
+      margin-top: 5%;
+    }
+
+    .arrow {
+      background: none;
+      border: none;
+      z-index: 3;
+
+    }
+
+    .arrow img {
+      width: 60px;
+      filter: brightness(8);
+    }
 }

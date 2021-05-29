@@ -11,10 +11,14 @@ import rainBg from "./images/rain.jpg";
 import drizzleBg from "./images/drizzle.jpg";
 import hazeBg from "./images/haze.jpg";
 import snowBg from "./images/snow.jpg";
+import chevronTop from "./images/chevron-top.png"
 
 //import Components
-import Data from "./Components/Data";
-import Menu from "./Components/Menu";
+import Data from "./Components/Data.jsx";
+import Menu from "./Components/Menu.jsx";
+
+//import windows size track
+import {useWindowSize} from 'react-use';
 
 const App = () => {
   const [weather, setWeather] = useState([]);
@@ -23,6 +27,11 @@ const App = () => {
   const [query, setQuery] = useState("London");
   const [error, setError] = useState(false);
   const [bg, setBg] = useState();
+  const [menuActive, setMenuActive] = useState(false);
+
+
+  const {width} = useWindowSize();
+  const breakpoint = 768;
 
   useEffect(() => {
     const getWeather = async () => {
@@ -108,6 +117,20 @@ const App = () => {
     setQuery(e.target.innerText);
   };
 
+  const toggleMenu = () => setMenuActive(!menuActive)
+
+  const chevronStyles = () => {
+    const styles = {
+        ChevronUp: {
+          transform: "rotate(0)"
+        },
+        ChevronDown: {
+          transform: "rotate(180deg)"
+        }
+    }
+    return menuActive ? styles.ChevronDown : styles.ChevronUp
+  }
+
   if (!weather.weather) {
     return <p>Loading</p>;
   }
@@ -122,7 +145,6 @@ const App = () => {
         temp={weather.main.temp}
         icon={weather.weather[0].icon}
       />
-
       <Menu
         clouds={weather.clouds.all}
         humidity={weather.main.humidity}
@@ -133,8 +155,10 @@ const App = () => {
         updateSearch={updateSearch}
         matchData={matchData}
         recentSearch={recentSearch}
+        menuActive={menuActive}
         error={error}
       />
+      {width > breakpoint ? "" : <button className="arrow" onClick={toggleMenu} ><img src={chevronTop} style={chevronStyles()} alt="chevron top" /></button>}
     </div>
   );
 };
