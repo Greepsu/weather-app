@@ -6,13 +6,11 @@ import "./style/menu.css";
 //import images
 import searchIcon from "../images/search-icon.png";
 
+//import keys id
 import { v4 as uuid_v4 } from "uuid";
 
 //import windows size track
-import {useWindowSize} from 'react-use';
-
-
-
+import { useWindowSize } from "react-use";
 
 const Menu = ({
   search,
@@ -27,35 +25,41 @@ const Menu = ({
   humidity,
   clouds,
 }) => {
-  const {width} = useWindowSize();
-const breakpoint = 768;
+  const { width } = useWindowSize();
+  const breakpoint = 768;
 
   const setButtonColor = () => {
-    if (weather === "Clouds") {
-      return {
-        backgroundColor: "#D66C05",
-      };
-    } else if (weather === "Clear") {
-      return {
-        backgroundColor: "#fbc72a",
-      };
-    } else if (weather === "Mist") {
-      return {
-        backgroundColor: "#91969C",
-      };
-    } else if (weather === "Rain") {
-      return {
-        backgroundColor: "#586760",
-      };
-    } else if (weather === "Drizzle") {
-      return {
-        backgroundColor: "white",
-      };
-    } else if (weather === "Haze") {
-      return {
-        backgroundColor: "#c8c4bd",
-      };
+    switch (weather) {
+      case "Clouds":
+        return colorStyles("#D66C05");
+
+      case "Clear":
+        return colorStyles("#fbc72a");
+
+      case "Mist":
+        return colorStyles("#91969C");
+
+      case "Rain":
+        return colorStyles("#586760");
+
+      case "Drizzle":
+        return colorStyles("#FFF");
+
+      case "Haze":
+        return colorStyles("#c8c4bd");
+
+      case "Snow":
+        return colorStyles("#91969C");
+
+      default:
+        return colorStyles("#D66C05");
     }
+  };
+  
+  const colorStyles = (color) => {
+    return {
+      backgroundColor: color
+    };
   };
 
   const inputColor = () => {
@@ -65,19 +69,8 @@ const breakpoint = 768;
   };
 
   const checkError = () => {
-    if (error === true) {
-      return {
-        display: "inline",
-      };
-    } else if (error === false) {
-      return {
-        display: "none",
-      };
-    }
+    return error ? { display: "inline" } : { display: "none" };
   };
-
-
-  
 
   const menuStyles = () => {
     const styles = {
@@ -88,10 +81,10 @@ const breakpoint = 768;
         transform: "translateY(0)",
       },
     };
-    if(width < breakpoint) {
-      return menuActive ? styles.Inactive : styles.Active
+    if (width < breakpoint) {
+      return menuActive ? styles.Inactive : styles.Active;
     }
-  }
+  };
 
   return (
     <div className="menu" style={menuStyles()}>

@@ -117,7 +117,6 @@ hr {
   .menu {
     padding: 40px 50px 0 50px;
     width: 40%;
-
   }
 
   form input {
@@ -150,9 +149,10 @@ hr {
 }
 
 @media screen and (max-width: 768px) {
-.menu {
-  bottom: 0;
-  width: 100%;
-  transition: 0.7s ease-in-out;
-}
+  .menu {
+    bottom: 0;
+    width: 100%;
+    transition: 0.7s ease-in-out;
+  }
+  
 }

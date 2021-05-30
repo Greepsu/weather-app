@@ -11,14 +11,14 @@ import rainBg from "./images/rain.jpg";
 import drizzleBg from "./images/drizzle.jpg";
 import hazeBg from "./images/haze.jpg";
 import snowBg from "./images/snow.jpg";
-import chevronTop from "./images/chevron-top.png"
+import chevronTop from "./images/chevron-top.png";
 
 //import Components
 import Data from "./Components/Data.jsx";
 import Menu from "./Components/Menu.jsx";
 
 //import windows size track
-import {useWindowSize} from 'react-use';
+import { useWindowSize } from "react-use";
 
 const App = () => {
   const [weather, setWeather] = useState([]);
@@ -29,14 +29,12 @@ const App = () => {
   const [bg, setBg] = useState();
   const [menuActive, setMenuActive] = useState(false);
 
-
-  const {width} = useWindowSize();
+  const { width } = useWindowSize();
   const breakpoint = 768;
 
   useEffect(() => {
     const getWeather = async () => {
       const API_KEY = process.env.REACT_APP_API_KEY;
-
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${API_KEY}&units=metric`
       );
@@ -45,7 +43,10 @@ const App = () => {
         setError(false);
         setWeather(data);
         if (recentSearch.length < 4) {
-          setRecentSearch((oldArray) => [...oldArray, query]);
+          if(recentSearch.length === 0) {
+            setRecentSearch([])
+          }
+          setRecentSearch(oldArray => [...oldArray, query]);
         } else {
           recentSearch.reverse();
           recentSearch.unshift(query);
@@ -57,79 +58,77 @@ const App = () => {
       }
     };
     getWeather();
+    // eslint-disable-next-line
   }, [query]);
-
+  
   useEffect(() => {
     const setBackground = () => {
       if (!weather.weather) return;
       const weatherType = weather.weather[0].main;
-      if (weatherType === "Clouds") {
-        return {
-          backgroundImage: `url(${cloudyBg})`,
-          transition: "1s ease-in-out",
-        };
-      } else if (weatherType === "Clear") {
-        return {
-          backgroundImage: `url(${sunnyBg})`,
-          transition: "1s ease-in-out",
-        };
-      } else if (weatherType === "Mist") {
-        return {
-          backgroundImage: `url(${foggyBg})`,
-          transition: "1s ease-in-out",
-        };
-      } else if (weatherType === "Rain") {
-        return {
-          backgroundImage: `url(${rainBg})`,
-          transition: "1s ease-in-out",
-        };
-      } else if (weatherType === "Drizzle") {
-        return {
-          backgroundImage: `url(${drizzleBg})`,
-          transition: "1s ease-in-out",
-        };
-      } else if (weatherType === "Haze") {
-        return {
-          backgroundImage: `url(${hazeBg})`,
-          transition: "1s ease-in-out",
-        };
-      } else if (weatherType === "Snow") {
-        return {
-          backgroundImage: `url(${snowBg})`,
-          transition: "1s ease-in-out",
-        };
+  
+      switch (weatherType) {
+        case "Clouds":
+          return bgStyles(cloudyBg);
+  
+        case "Clear":
+          return bgStyles(sunnyBg);
+  
+        case "Mist":
+          return bgStyles(foggyBg);
+  
+        case "Rain":
+          return bgStyles(rainBg);
+  
+        case "Drizzle":
+          return bgStyles(drizzleBg);
+  
+        case "Haze":
+          return bgStyles(hazeBg);
+  
+        case "Snow":
+          return bgStyles(snowBg);
+
+        default:
+          return bgStyles(cloudyBg);
       }
+    };
+    
+    const bgStyles = (bg) => {
+      return {
+        backgroundImage: `url(${bg})`,
+        transition: "1s ease-in-out",
+      };
     };
     setBg(setBackground());
   }, [weather]);
 
-  const updateSearch = (e) => {
-    setSearch(e.target.value);
-  };
+  const updateSearch = (e) => setSearch(e.target.value);
 
   const getSearch = (e) => {
     e.preventDefault();
     setQuery(search);
     setSearch("");
+    setMenuActive(false);
   };
 
   const matchData = (e) => {
     setQuery(e.target.innerText);
+    setMenuActive(false);
   };
 
-  const toggleMenu = () => setMenuActive(!menuActive)
+  const toggleMenu = () => setMenuActive(!menuActive);
 
   const chevronStyles = () => {
     const styles = {
-        ChevronUp: {
-          transform: "rotate(0)"
-        },
-        ChevronDown: {
-          transform: "rotate(180deg)"
-        }
-    }
-    return menuActive ? styles.ChevronDown : styles.ChevronUp
-  }
+      ChevronUp: {
+        transform: "rotate(0)",
+      },
+      ChevronDown: {
+        transform: "rotate(180deg)",
+      },
+    };
+    return menuActive ? styles.ChevronDown : styles.ChevronUp;
+  };
 
   if (!weather.weather) {
     return <p>Loading</p>;
@@ -158,7 +157,13 @@ const App = () => {
         menuActive={menuActive}
         error={error}
       />
-      {width > breakpoint ? "" : <button className="arrow" onClick={toggleMenu} ><img src={chevronTop} style={chevronStyles()} alt="chevron top" /></button>}
+      {width > breakpoint ? (
+        ""
+      ) : (
+        <button className="arrow" onClick={toggleMenu}>
+          <img src={chevronTop} style={chevronStyles()} alt="chevron top" />
+        </button>
+      )}
     </div>
   );
 };
