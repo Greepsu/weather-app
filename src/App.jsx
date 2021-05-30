@@ -95,8 +95,7 @@ const App = () => {
     
     const bgStyles = (bg) => {
       return {
-        backgroundImage: `url(${bg})`,
-        transition: "1s ease-in-out",
+        backgroundImage: `url(${bg})`
       };
     };
     setBg(setBackground());
