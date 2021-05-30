@@ -55,10 +55,10 @@ const Menu = ({
         return colorStyles("#D66C05");
     }
   };
-  
+
   const colorStyles = (color) => {
     return {
-      backgroundColor: color
+      backgroundColor: color,
     };
   };
 

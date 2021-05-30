@@ -43,10 +43,10 @@ const App = () => {
         setError(false);
         setWeather(data);
         if (recentSearch.length < 4) {
-          if(recentSearch.length === 0) {
-            setRecentSearch([])
+          if (recentSearch.length === 0) {
+            setRecentSearch([]);
           }
-          setRecentSearch(oldArray => [...oldArray, query]);
+          setRecentSearch((oldArray) => [...oldArray, query]);
         } else {
           recentSearch.reverse();
           recentSearch.unshift(query);
@@ -60,31 +60,31 @@ const App = () => {
     getWeather();
     // eslint-disable-next-line
   }, [query]);
-  
+
   useEffect(() => {
     const setBackground = () => {
       if (!weather.weather) return;
       const weatherType = weather.weather[0].main;
-  
+
       switch (weatherType) {
         case "Clouds":
           return bgStyles(cloudyBg);
-  
+
         case "Clear":
           return bgStyles(sunnyBg);
-  
+
         case "Mist":
           return bgStyles(foggyBg);
-  
+
         case "Rain":
           return bgStyles(rainBg);
-  
+
         case "Drizzle":
           return bgStyles(drizzleBg);
-  
+
         case "Haze":
           return bgStyles(hazeBg);
-  
+
         case "Snow":
           return bgStyles(snowBg);
 
@@ -92,10 +92,10 @@ const App = () => {
           return bgStyles(cloudyBg);
       }
     };
-    
+
     const bgStyles = (bg) => {
       return {
-        backgroundImage: `url(${bg})`
+        backgroundImage: `url(${bg})`,
       };
     };
     setBg(setBackground());

@@ -22,7 +22,10 @@ const Data = ({ city, weather, temp, icon }) => {
         <p className="date">{dateLocale}</p>
       </div>
       <div className="weather">
-        <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt="weather icon" />
+        <img
+          src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
+          alt="weather icon"
+        />
         <span>{weather}</span>
       </div>
     </div>
