@@ -13,7 +13,7 @@ body {
 }
 
 .App {
-    display: flex;
+  display: flex;
   position: relative;
   background-size: cover;
   background-repeat: no-repeat;
@@ -40,35 +40,34 @@ body {
 }
 
 @media screen and (max-width: 1024px) {
-    .logo {
-        font-size: 22px;
-    }
+  .logo {
+    font-size: 22px;
+  }
 }
 
 @media screen and (max-width: 768px) {
-    .App {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        overflow: hidden;
-        width: 100%;
-    }
+  .App {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    width: 100%;
+  }
 
-    .logo {
-      position: static;
-      margin-top: 5%;
-    }
+  .logo {
+    position: static;
+    margin-top: 5%;
+  }
 
-    .arrow {
-      background: none;
-      border: none;
-      z-index: 3;
+  .arrow {
+    background: none;
+    border: none;
+    z-index: 3;
+  }
 
-    }
-
-    .arrow img {
-      width: 60px;
-      filter: brightness(8);
-    }
+  .arrow img {
+    width: 60px;
+    filter: brightness(8);
+  }
 }
