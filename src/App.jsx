@@ -29,6 +29,7 @@ const App = () => {
   const [bg, setBg] = useState();
   const [menuActive, setMenuActive] = useState(false);
 
+  //Track windows size and define breakpoint
   const { width } = useWindowSize();
   const breakpoint = 768;
 
