@@ -1,6 +1,6 @@
 # ☀️ Weather App
 
-![weather app header](src/images/readmeheader.png)
+![weather app header](src/images/readmeheaderapp.png)
 
 ## Front-end project using a third-party API
 
