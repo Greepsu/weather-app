@@ -30,5 +30,5 @@ npm start
 
 ## 💻 Links
 
-Application: https://weather-app-greepsu.vercel.app <br/>
+Application: https://weather-app-eight-neon.vercel.app <br/>
 Github: https://github.com/Greepsu/weather-app
