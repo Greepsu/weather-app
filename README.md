@@ -6,7 +6,7 @@
 
 ## ✏️ Description
 
-Development of a responsive weather web application using React.js and the _openweathermap_ API. <br/>
+**Weather App** is a responsive weather web application using React.js and the _openweathermap_ API. <br/>
 Possibility to search a detailed weather forecast by city, with the rate of cloud cover, the rate of humidity and the force of the wind.<br/>
 Dynamic change of the background depending on the weather (sunny, cloudy, fog ...)<br/>
 Fully responsive application. <br/>
