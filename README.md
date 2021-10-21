@@ -16,6 +16,8 @@ Upload with Vercel
 
 ![weather app overview](src/images/overviewapp.png)
 
+Design by Arthur K
+
 ## 🔥 Experience
 
 This web application allowed me to enhance my bases in React.js with the creation of a custom Hooks for API requests. But also in responsive design with the CSS3 breakpoints.
