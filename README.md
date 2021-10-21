@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+# ☀️ Weather App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![weather app header](src/images/readmeheader.png)
 
-## Available Scripts
+## Front-end project using a third-party API
 
-In the project directory, you can run:
+## ✏️ Description
 
-### `npm start`
+Development of a responsive weather web application using React.js and the _openweathermap_ API. <br/>
+Possibility to search a detailed weather forecast by city, with the rate of cloud cover, the rate of humidity and the force of the wind.<br/>
+Dynamic change of the background depending on the weather (sunny, cloudy, fog ...)<br/>
+Fully responsive application. <br/>
+Upload with Vercel
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 🔥 Experience
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+This web application allowed me to enhance my bases in React.js with the creation of a custom Hooks for API requests. But also in responsive design with the CSS3 breakpoints.
 
-### `npm test`
+## ⚙️ Techno used
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<img alt="React" src="https://img.shields.io/badge/-React-45b8d8?style=flat-square&logo=react&logoColor=white" /> <img alt="CSS3" src="https://img.shields.io/badge/-CSS3-1572B6?style=flat-square&logo=CSS3&logoColor=white" /> <img alt="Vercel" src="https://img.shields.io/badge/-Vercel-f1f1f1?style=flat-square&logo=Vercel&logoColor=000000" />
 
-### `npm run build`
+## 🔧 Install
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+git clone https://github.com/Greepsu/weather-app
+cd weather-app
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 💻 Links
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Application: https://weather-app-greepsu.vercel.app <br/>
+Github: https://github.com/Greepsu/weather-app
